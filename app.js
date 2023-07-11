@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import bodegas from './router/bodegasRouter.js';
+import inventarios from './router/inventarioRouter.js';
 
 dotenv.config();
 
@@ -9,6 +10,7 @@ app.use(express.json());
 
 
 app.use('/bodegas', bodegas);
+app.use('/inventario', inventarios);
 
 
 let config = JSON.parse(process.env.MY_CONFIG);

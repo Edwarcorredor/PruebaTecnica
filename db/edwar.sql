@@ -61,7 +61,7 @@ CREATE TABLE users(
     email_verified_at TIMESTAMP NULL,
     estado TINYINT(4),
     created_by BIGINT(20) UNSIGNED,
-    updated_by BIGINT(20) UNSIGNED,
+    update_by BIGINT(20) UNSIGNED,
     foto VARCHAR(255),
     password VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -96,4 +96,6 @@ ALTER TABLE bodegas ADD CONSTRAINT FK_id_respo_bode_id_users FOREIGN KEY (id_res
 ALTER TABLE bodegas ADD CONSTRAINT FK_crea_by_bode_id_users FOREIGN KEY (created_by) REFERENCES users (id);
 
 ALTER TABLE bodegas ADD CONSTRAINT FK_upda_by_bode_id_users FOREIGN KEY (update_by) REFERENCES users (id);
+
+
 

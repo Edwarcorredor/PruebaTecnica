@@ -1,5 +1,5 @@
-import { Router } from "express";
-import mysql from "mysql2";
+import { Router } from 'express'
+import mysql from "mysql2"
 
 const bodegas = Router();
 
@@ -7,12 +7,13 @@ let conexion = undefined;
 
 bodegas.use((req,res,next) => {
     conexion=mysql.createPool({
-        host: "127.0.0.1",
-        user: "root",
-        password: "",
-        database: "prueba_tecnica_edwar_M3",
+        host: "localhost",
+        user: "campus",
+        password: "campus2023",
+        database: "prueba_tecnica_Edwar_M3",
         port: 3306
     })
+    console.log()
     next();
 });
 
