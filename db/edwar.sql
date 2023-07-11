@@ -99,3 +99,8 @@ ALTER TABLE bodegas ADD CONSTRAINT FK_upda_by_bode_id_users FOREIGN KEY (update_
 
 
 
+INSERT INTO productos  SET ?
+ON DUPLICATE KEY UPDATE nombre = VALUES(nombre), descripcion = VALUES(descripcion);
+
+INSERT INTO inventarios (producto_id, bodega_id, cantidad) VALUES (1, 1, cantidad_inicial)
+ON DUPLICATE KEY UPDATE cantidad = VALUES(cantidad);
