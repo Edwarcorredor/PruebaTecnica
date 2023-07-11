@@ -22,7 +22,7 @@ CREATE TABLE inventarios(
     id_producto BIGINT(20) UNSIGNED,
     cantidad INT(11),
     created_by BIGINT(20) UNSIGNED,
-    updated_by BIGINT(20) UNSIGNED,
+    update_by BIGINT(20) UNSIGNED,
     created_at TIMESTAMP,
     updated_at TIMESTAMP NULL,
     deleted_at TIMESTAMP NULL
@@ -34,7 +34,7 @@ CREATE TABLE bodegas(
     id_responsable BIGINT(20) UNSIGNED,
     estado TINYINT(4),
     created_by BIGINT(20) UNSIGNED,
-    updated_by BIGINT(20) UNSIGNED,
+    update_by BIGINT(20) UNSIGNED,
     created_at TIMESTAMP,
     updated_at TIMESTAMP NULL,
     deleted_at TIMESTAMP NULL
@@ -46,7 +46,7 @@ CREATE TABLE productos(
     descripcion VARCHAR(255),
     estado TINYINT(4),
     created_by BIGINT(20) UNSIGNED,
-    updated_by BIGINT(20) UNSIGNED,
+    update_by BIGINT(20) UNSIGNED,
     created_at TIMESTAMP,
     updated_at TIMESTAMP NULL,
     deleted_at TIMESTAMP NULL
@@ -63,7 +63,7 @@ CREATE TABLE users(
     created_by BIGINT(20) UNSIGNED,
     updated_by BIGINT(20) UNSIGNED,
     foto VARCHAR(255),
-    passwords VARCHAR(255),
+    password VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NULL,
     deleted_at TIMESTAMP NULL
@@ -96,5 +96,4 @@ ALTER TABLE bodegas ADD CONSTRAINT FK_id_respo_bode_id_users FOREIGN KEY (id_res
 ALTER TABLE bodegas ADD CONSTRAINT FK_crea_by_bode_id_users FOREIGN KEY (created_by) REFERENCES users (id);
 
 ALTER TABLE bodegas ADD CONSTRAINT FK_upda_by_bode_id_users FOREIGN KEY (update_by) REFERENCES users (id);
-
 
