@@ -3,7 +3,7 @@ CREATE DATABASE prueba_tecnica_Edwar_M3;
 USE prueba_tecnica_Edwar_M3;
 
 CREATE TABLE historiales (
-    id BIGINT(20) PRIMARY KEY NOT NULL,
+    id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
     cantidad INT(11),
     id_bodega_origen BIGINT(20) UNSIGNED,
     id_bodega_destino BIGINT(20) UNSIGNED,
@@ -17,7 +17,7 @@ CREATE TABLE historiales (
 
 
 CREATE TABLE inventarios(
-    id BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY,
+    id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     id_bodega BIGINT(20) UNSIGNED,
     id_producto BIGINT(20) UNSIGNED,
     cantidad INT(11),
@@ -29,7 +29,7 @@ CREATE TABLE inventarios(
 );
 
 CREATE TABLE bodegas(
-    id BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY,
+    id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255),
     id_responsable BIGINT(20) UNSIGNED,
     estado TINYINT(4),
@@ -41,7 +41,7 @@ CREATE TABLE bodegas(
 );
 
 CREATE TABLE productos(
-    id BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY,
+    id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     descripcion VARCHAR(255),
     estado TINYINT(4),
@@ -55,7 +55,7 @@ CREATE TABLE productos(
 
 
 CREATE TABLE users(
-    id BIGINT(20) UNSIGNED NOT NULL PRIMARY KEY,
+    id BIGINT(20) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     email VARCHAR(255),
     email_verified_at TIMESTAMP NULL,
@@ -98,9 +98,3 @@ ALTER TABLE bodegas ADD CONSTRAINT FK_crea_by_bode_id_users FOREIGN KEY (created
 ALTER TABLE bodegas ADD CONSTRAINT FK_upda_by_bode_id_users FOREIGN KEY (update_by) REFERENCES users (id);
 
 
-
-INSERT INTO productos  SET ?
-ON DUPLICATE KEY UPDATE nombre = VALUES(nombre), descripcion = VALUES(descripcion);
-
-INSERT INTO inventarios (producto_id, bodega_id, cantidad) VALUES (1, 1, cantidad_inicial)
-ON DUPLICATE KEY UPDATE cantidad = VALUES(cantidad);
