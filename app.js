@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bodegas from './router/bodegasRouter.js';
 import inventarios from './router/inventarioRouter.js';
+import productos from './router/productosRouter.js';
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ app.use(express.json());
 
 
 app.use('/bodegas', bodegas);
+app.use('productos', productos);
 app.use('/inventario', inventarios);
 
 
