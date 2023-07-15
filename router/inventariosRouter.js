@@ -6,14 +6,16 @@ const inventarios = Router();
 inventarios.post('/', conexion_db, (req, res) => {
     /**
     **Funcion que permite insertar registros en la tabla de inventarios, en la cual si no existe se crea un registro nuevo y si existe se actualiza la cantidad de unidadesd del producto
+    ** variables de entrada:
+    **id_bodega, id_producto, cantidad, created_by, update_by, updated_at, deleted_at
     */
-    const { id_producto, id_bodega, cantidad } = req.body;
+    const { ID_PRODUCTO, ID_BODEGA, CANTIDAD,  } = req.body;
     /**
      ** Verificar si la combinación de id_producto e id_bodega ya existe en la tabla de inventarios
     */
     req.conexion.query(
         'SELECT * FROM inventarios WHERE id_producto = ? AND id_bodega = ?',
-        [id_producto, id_bodega],
+        [ID_PRODUCTO, ID_BODEGA],
         (error, results) => {
         if (error) {
           console.error(error);
@@ -25,7 +27,7 @@ inventarios.post('/', conexion_db, (req, res) => {
           */ 
           req.conexion.query(
           'INSERT INTO inventarios (id_producto, id_bodega, cantidad) VALUES (?, ?, ?)',
-          [id_producto, id_bodega, cantidad],
+          [ID_PRODUCTO, ID_BODEGA, CANTIDAD],
           (error, results) => {
             if (error) {
             console.error(error);
@@ -39,10 +41,10 @@ inventarios.post('/', conexion_db, (req, res) => {
              ** La combinación ya existe, realizar un UPDATE en la tabla de inventarios sumando la cantidad existente con la cantidad nueva 
             */
             const cantidadExistente = results[0].cantidad;
-            const nuevaCantidad = cantidadExistente + cantidad;
+            const nuevaCantidad = cantidadExistente + CANTIDAD;
             req.conexion.query(
             'UPDATE inventarios SET cantidad = ? WHERE id_producto = ? AND id_bodega = ?',
-            [nuevaCantidad, id_producto, id_bodega],
+            [nuevaCantidad, ID_PRODUCTO, ID_BODEGA],
             (error, results) => {
                 if (error) {
                 console.error(error);
