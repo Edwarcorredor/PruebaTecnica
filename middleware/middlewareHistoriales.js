@@ -1,11 +1,11 @@
 import 'reflect-metadata';
 import { plainToClass } from 'class-transformer';
-import {bodegas} from "../controller/bodegas.js"
+import {historiales} from "../controller/historiales.js"
 
 
-const middlewareBodega = (req, res, next) => {
+const middlewareHistoriales = (req, res, next) => {
     try{
-        let data = plainToClass(bodegas, req.body);
+        let data = plainToClass(historiales, req.body);
         req.body = JSON.parse(JSON.stringify(data));
         
         next();
@@ -14,4 +14,4 @@ const middlewareBodega = (req, res, next) => {
     }  
 }
 
-export default middlewareBodega
+export default middlewareHistoriales

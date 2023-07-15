@@ -9,7 +9,7 @@ inventarios.post('/', conexion_db, (req, res) => {
     ** variables de entrada:
     **id_bodega, id_producto, cantidad, created_by, update_by, updated_at, deleted_at
     */
-    const { ID_PRODUCTO, ID_BODEGA, CANTIDAD,  } = req.body;
+    const { ID_PRODUCTO, ID_BODEGA, CANTIDAD, CREATED_BY, UPDATE_BY, UPDATED_AT, DELETED_AT  } = req.body;
     /**
      ** Verificar si la combinación de id_producto e id_bodega ya existe en la tabla de inventarios
     */
@@ -26,8 +26,8 @@ inventarios.post('/', conexion_db, (req, res) => {
            ** La combinación es nueva, realizar un INSERT en la tabla de inventarios
           */ 
           req.conexion.query(
-          'INSERT INTO inventarios (id_producto, id_bodega, cantidad) VALUES (?, ?, ?)',
-          [ID_PRODUCTO, ID_BODEGA, CANTIDAD],
+          'INSERT INTO inventarios (id_producto, id_bodega, cantidad, created_by, update_by, updated_by, deleted_by) VALUES (?, ?, ?, ?, ?, ?, ?)',
+          [ID_PRODUCTO, ID_BODEGA, CANTIDAD, CREATED_BY, UPDATE_BY, UPDATED_AT, DELETED_AT],
           (error, results) => {
             if (error) {
             console.error(error);
