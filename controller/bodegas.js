@@ -11,7 +11,7 @@ import { Expose } from "class-transformer";
 export class bodegas {
     constructor(p1, p2, p3, p4, p5, p6, p7, p8) {
         this.NOMBRE = p1;
-        this.ID_RESPONSABE = p2;
+        this.ID_RESPONSABLE = p2;
         this.ESTADO = p3;
         this.CREATED_BY = p4;
         this.UPDATE_BY = p5;
@@ -27,7 +27,7 @@ __decorate([
 __decorate([
     Expose({ name: "id_responsable" }),
     __metadata("design:type", Number)
-], bodegas.prototype, "ID_RESPONSABE", void 0);
+], bodegas.prototype, "ID_RESPONSABLE", void 0);
 __decorate([
     Expose({ name: "estado" }),
     __metadata("design:type", Number)

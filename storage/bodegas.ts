@@ -8,7 +8,7 @@ export class bodegas{
     @Expose({name: "nombre"})
     NOMBRE:string
     @Expose({name: "id_responsable"})
-    ID_RESPONSABE:number
+    ID_RESPONSABLE:number
     @Expose({name: "estado"})
     ESTADO:number
     @Expose({name: "created_by"})
@@ -23,7 +23,7 @@ export class bodegas{
     DELETED_AT:string
     constructor(p1:string, p2:number, p3:number, p4:number, p5:number, p6:string, p7:string, p8:string){
         this.NOMBRE = p1;
-        this.ID_RESPONSABE = p2;
+        this.ID_RESPONSABLE = p2;
         this.ESTADO = p3;
         this.CREATED_BY = p4;
         this.UPDATE_BY = p5;
