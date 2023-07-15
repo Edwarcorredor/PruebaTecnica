@@ -19,14 +19,17 @@ productos.get('/', conexion_db, (req,res) => {
 productos.post('/', conexion_db, (req, res) => {
     /**
      * Funcion que permite insertar productos y a su vez asigna una cantidad inicial del mismo en la tabla inventarios en una de las bodegas por default. 
+     * variables de entrada:
+     * nombre, descripcion, estado, created_by, update_by, updated_at, deleted_at
     */
+    const { NOMBRE, DESCRIPCION, ESTADO, CREATED_BY, UPDATE_BY, UPDATED_AT, DELETED_AT } = req.body;
     req.conexion.query(
-      'INSERT INTO productos SET ?',
-      req.body,
+        `INSERT INTO productos (nombre, descripcion, estado, created_by, update_by, updated_at, deleted_at) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [ NOMBRE, DESCRIPCION, ESTADO, CREATED_BY, UPDATE_BY, UPDATED_AT, DELETED_AT ],
       (error, results) => {
         if (error) {
           console.error('Error al insertar el producto:', error);
-          return res.status(500).send("error");
+          res.status(500).send("error");
         }
         const productoId = results.insertId;  // Obtener el ID del producto insertado
         // Insertar la cantidad inicial en la tabla "inventarios"
@@ -36,7 +39,7 @@ productos.post('/', conexion_db, (req, res) => {
             (error, results) => {
             if (error) {
                 console.error(error);
-                return res.status(500).send("error");
+                res.status(500).send("error");
             }
             res.send(results);
             }

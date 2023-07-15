@@ -5,6 +5,7 @@ import inventarios from './router/inventarioRouter.js';
 import productos from './router/productosRouter.js';
 import historiales from './router/historialesRouter.js';
 import middlewareBodega from './middleware/middlewareBodega.js';
+import middlewareProductos from './middleware/middlewareProductos.js';
 
 dotenv.config();
 
@@ -13,7 +14,7 @@ app.use(express.json());
 
 
 app.use('/bodegas',middlewareBodega,bodegas);
-app.use('/productos', productos);                       
+app.use('/productos', middlewareProductos, productos);                       
 app.use('/inventario', inventarios);
 app.use('/historiales', historiales);
 

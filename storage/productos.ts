@@ -1,14 +1,14 @@
 import { Type, Transform, Expose } from "class-transformer";
 
-export class bodegas{
+export class productos{
         /**
     **variables de entrada:
-    **nombre, id_responsable, estado, created_by, update_by, updated_at, deleted_at
+    **nombre, descripcion, estado, created_by, update_by, updated_at, deleted_at
     */
     @Expose({name: "nombre"})
     NOMBRE:string
-    @Expose({name: "id_responsable"})
-    ID_RESPONSABLE:number
+    @Expose({name: "descripcion"})
+    DESCRIPCION:string
     @Expose({name: "estado"})
     ESTADO:number
     @Expose({name: "created_by"})
@@ -21,9 +21,9 @@ export class bodegas{
     UPDATE_AT:string
     @Expose({name: "deleted_at"})
     DELETED_AT:string
-    constructor(p1:string, p2:number, p3:number, p4:number, p5:number, p6:string, p7:string, p8:string){
+    constructor(p1:string, p2:string, p3:number, p4:number, p5:number, p6:string, p7:string, p8:string){
         this.NOMBRE = p1;
-        this.ID_RESPONSABLE = p2;
+        this.DESCRIPCION = p2;
         this.ESTADO = p3;
         this.CREATED_BY = p4;
         this.UPDATE_BY = p5;
